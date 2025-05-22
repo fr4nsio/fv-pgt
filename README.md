@@ -56,7 +56,7 @@ but execute only one command at a time!**
    ```shell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
    ```
-
+ 
 3. close the **administrator** Powershell
 4. open a normal Powershell
 5. go into the project directory and proceed to create the virtual environment

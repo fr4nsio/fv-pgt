@@ -1,0 +1,206 @@
+<h2 id="instructions">Instructions</h2>
+<!--TOC-->
+<ul>
+<li><a href="#instructions">Instructions</a>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#important">Important</a></li>
+<li><a href="#windows">Windows</a>
+<ul>
+<li><a href="#report">Report</a></li>
+<li><a href="#notes">Notes</a></li>
+</ul></li>
+<li><a href="#mac">Mac</a>
+<ul>
+<li><a href="#report-1">Report</a></li>
+<li><a href="#notes-1">Notes</a></li>
+</ul></li>
+<li><a href="#linux">Linux</a>
+<ul>
+<li><a href="#report-2">Report</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#post-install">Post-install</a></li>
+<li><a href="#other">Other</a></li>
+</ul>
+<!--TOC-->
+<h3 id="summary">Summary</h3>
+<p><em>Open the readme.html file with a web browser for better
+reading.</em></p>
+<p>There are just a few steps to run the script:</p>
+<ol type="1">
+<li>you need Python, at least version 3.11</li>
+<li>you will setup a Python virtual environment</li>
+<li>you will install dependencies in the Python virtual environment</li>
+<li>you will run the script</li>
+</ol>
+<p>If you follow all the instructions below, depending on your operating
+system,<br />
+the process should require just a few minutes. Take your time. I’m
+available<br />
+for questions and clarifications on this: just ask.</p>
+<p>See also <a
+href="https://docs.python.org/3/library/venv.html#how-venvs-work">https://docs.python.org/3/library/venv.html#how-venvs-work</a></p>
+<p><strong>This video is just here for reference, to give you an idea of
+how it works. Please follow the instructions i written
+below.</strong></p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Y21OR1OPC9A?si=dG3y68A5kAZE5Gg2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<h3 id="important">Important</h3>
+<p><strong>All the commands you see are to be executed one by one. Don’t
+copy the whole command block, but execute only one command at a
+time!</strong></p>
+<h3 id="windows">Windows</h3>
+<ol type="1">
+<li><p>install Python 3.11 from the <a
+href="https://apps.microsoft.com/detail/9nrwmjp3717k?hl=en-us&amp;gl=EN"><strong>Windows
+store</strong></a> which works out of the box. <strong>Don’t use the
+releases from the Python website</strong>.</p></li>
+<li><p>open the Powershell <strong>as administrator</strong>, then set
+the execution policy to <code>Unrestricted</code>. This needs to be done
+only once, not every time you create a virtual environment. See also <a
+href="https://go.microsoft.com/fwlink/?LinkID=135170">https://go.microsoft.com/fwlink/?LinkID=135170</a></p>
+<pre class="shell"><code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted</code></pre></li>
+<li><p>close the <strong>administrator</strong> Powershell</p></li>
+<li><p>open a normal Powershell</p></li>
+<li><p>go into the project directory and proceed to create the virtual
+environment</p>
+<pre class="shell"><code>python3 -m venv .venv
+. .\.venv\Scripts\activate
+pip install -r requirements.txt</code></pre></li>
+<li><p>install npm from the <a
+href="https://nodejs.org/en">website</a></p></li>
+<li><p>compile the frontend</p>
+<pre class="shell"><code>cd frontend
+npm install
+npm run build
+cd ..</code></pre></li>
+<li><p>run the script</p>
+<pre class="shell"><code>python app.py</code></pre></li>
+<li><p>to exit the Python virtual environment run</p>
+<pre class="shell"><code>deactivate</code></pre></li>
+<li><p>to run the script again run</p>
+<pre class="shell"><code>. .\.venv\Scripts\activate</code></pre>
+<p>then start at step 6</p></li>
+<li><p>open another Powershell and run the populate script and the
+continuous readings script</p>
+<pre class="shell"><code>. .\.venv\Scripts\activate
+cd scripts
+python -m populate
+cd 40_plant_module_system_sensor_reading
+python -m continuous_new_sensor_readings
+deactivate</code></pre></li>
+<li><p>to start the error simulation, replace the previous step with
+this one. You don’t need to call the
+<code>continuous_new_sensor_readings</code> in this case</p>
+<pre class="shell"><code>. .\.venv\Scripts\activate
+cd scripts
+python -m error_populate
+deactivate</code></pre></li>
+</ol>
+<h4 id="report">Report</h4>
+<p>See Linux instructions.</p>
+<h4 id="notes">Notes</h4>
+<p><strong>Note: for security reasons I suggest putting the execution
+policy back to its<br />
+original state when the script will not be needed anymore.</strong></p>
+<p>These are not 1 to 1 instructions of what you just read but they
+should help you undrestand better.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Z9Vm9Uxk5pA?si=pNmk-scCCmsu8bWE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<h3 id="mac">Mac</h3>
+<ol type="1">
+<li><p>open a terminal and go into the project directory</p></li>
+<li><p>if not already installed, install Python</p>
+<pre class="shell"><code>brew install python</code></pre></li>
+<li><p>now create the virtual environment</p>
+<pre class="shell"><code>python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt</code></pre></li>
+<li><p>install npm from the <a
+href="https://nodejs.org/en">website</a></p></li>
+<li><p>compile the frontend</p>
+<pre class="shell"><code>cd frontend
+npm install
+npm run build
+cd ..</code></pre></li>
+<li><p>run the script</p>
+<pre class="shell"><code>python app.py</code></pre></li>
+<li><p>to exit the Python virtual environment run</p>
+<pre class="shell"><code>deactivate</code></pre></li>
+<li><p>to run the script again run</p>
+<pre class="shell"><code>source .venv/bin/activate</code></pre>
+<p>then start at step 6</p></li>
+<li><p>see Linux for the populate scripts</p></li>
+</ol>
+<h4 id="report-1">Report</h4>
+<p>See Linux instructions.</p>
+<h4 id="notes-1">Notes</h4>
+<p><em>Neither the script nor these instructions have been tested on
+macOS. At the moment I can test on various Linux distros and on a
+Windows 10 virtual machine. As of this moment I don’t have a method to
+test scripts on a Mac OS system.</em></p>
+<p><em>Everything should work because the steps are similar to Linux,
+but please keep this in mind.</em></p>
+<p><em>You have accepted this as part of the project requirements (see
+gig FAQs)</em></p>
+<h3 id="linux">Linux</h3>
+<ol type="1">
+<li><p>open a terminal and go into the project directory</p></li>
+<li><p>if you are on a new Debian-based system and never created a
+Python virtual environment before, most probably you need to install
+this package</p>
+<pre class="shell"><code>sudo apt install python3-venv</code></pre></li>
+<li><p>create the virtual environment</p>
+<pre class="shell"><code>python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt</code></pre></li>
+<li><p>install npm</p>
+<pre class="shell"><code>sudo apt install npm</code></pre></li>
+<li><p>compile the frontend</p>
+<pre class="shell"><code>cd frontend
+npm install
+npm run build</code></pre></li>
+<li><p>run the script</p>
+<pre class="shell"><code>python app.py</code></pre></li>
+<li><p>to exit the Python virtual environment run</p>
+<pre class="shell"><code>deactivate</code></pre></li>
+<li><p>to run the script again run</p>
+<pre class="shell"><code>. .venv/bin/activate</code></pre>
+<p>then start at step 6</p></li>
+<li><p>open another terminal and run the populate script and the
+continuous readings script</p>
+<pre class="shell"><code>. .venv/bin/activate
+cd scripts
+python -m populate
+cd 40_plant_module_system_sensor_reading
+python -m continuous_new_sensor_readings
+deactivate</code></pre></li>
+<li><p>to start the error simulation, replace the previous step with
+this one. You don’t need to call the
+<code>continuous_new_sensor_readings</code> in this case</p>
+<pre class="shell"><code>. .venv/bin/activate
+cd scripts
+python -m error_populate
+deactivate</code></pre></li>
+</ol>
+<h4 id="report-2">Report</h4>
+<p>These steps have only been tested on Debian GNU/Linux.</p>
+<ol type="1">
+<li><p>install Pandoc and textlive-extra</p>
+<pre class="shell"><code>sudo apt install pandoc texlive-latex-extra texlive-science imagemagick</code></pre></li>
+<li><p>move to the report directory</p>
+<pre class="shell"><code>cd report/report_finale</code></pre></li>
+<li><p>activate the Python virtual environment and install the
+requirements</p></li>
+<li><p>compile the PDF</p>
+<pre class="shell"><code>./compile.sh</code></pre></li>
+</ol>
+<h2 id="post-install">Post-install</h2>
+<p><strong>Once the server is running connect to <a
+href="http://localhost:8080">http://localhost:8080</a></strong></p>
+<p>Credentials: - <code>admin0</code> - <code>password0</code></p>
+<h2 id="other">Other</h2>
+<p>To regenerate this HTML doc run:</p>
+<pre class="shell"><code>pandoc -f markdown -t html -o readme.html README.md</code></pre>
+<p>By <a href="https://blog.franco.net.eu.org">Franco Masotti</a></p>

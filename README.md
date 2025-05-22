@@ -312,4 +312,4 @@ To regenerate this HTML doc run:
 pandoc -f markdown -t html -o readme.html README.md
 ```
 
-By [Franco Masotti](https://blog.franco.net.eu.org)
+
